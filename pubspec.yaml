@@ -11,6 +11,17 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # multicast_dns: ^0.3.2+3
+  nsd: ^2.3.1
+  
+  shelf: ^1.4.1
+  shelf_web_socket: ^1.0.4
+  shelf_static: ^1.1.2
+  web_socket_channel: ^2.4.0
+
+  equatable: ^2.0.5
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
