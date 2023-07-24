@@ -40,11 +40,20 @@ class _LocalNetworkInternal extends LocalNetwork {
   @override
   void addListener<T extends SocketEvent>(SocketEventCallback<T> listener) {
     _listeners[T] = [listener as SocketEventCallback];
+    if (_listeners.containsKey(T)) {
+      if (!_listeners[T]!.contains(listener)) {
+        _listeners[T]!.add(listener);
+      }
+    } else {
+      _listeners[T] = [listener];
+    }
   }
 
   @override
   void removeListener<T extends SocketEvent>(SocketEventCallback<T> listener) {
-    // TODO: implement removeListener
+    if (_listeners.containsKey(T)) {
+      _listeners[T]!.remove(listener);
+    }
   }
 
   @override
