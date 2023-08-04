@@ -113,13 +113,14 @@ class _LocalNetworkInternal extends LocalNetwork {
             currentDevice = null;
           }
         } else {
-          if (status == nsd.ServiceStatus.found) {
-            _discoveredDevices.add(device);
-          } else {
-            _discoveredDevices.remove(device);
-          }
-          _discoveredDevicesStreamController.add(_discoveredDevices);
+          //
         }
+        if (status == nsd.ServiceStatus.found) {
+          _discoveredDevices.add(device);
+        } else {
+          _discoveredDevices.remove(device);
+        }
+        _discoveredDevicesStreamController.add(_discoveredDevices);
       });
 
       _discovery!.addListener(() {
