@@ -40,11 +40,3 @@ abstract class LocalNetwork {
 
   void removeListener<T extends SocketEvent>(SocketEventCallback<T> listener);
 }
-
-abstract class DiscoveredDeviceX {
-  String get name;
-  String get address;
-  int get port;
-  int get socketPort;
-  String get uuid;
-}

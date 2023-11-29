@@ -16,12 +16,16 @@ know whether this package might be useful for them.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+在本地网络中发现其它相同服务的设备。
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```
+local_network:
+    git:
+        url: https://github.com/cezres/local_network.git
+        ref: main
+```
 
 ## Usage
 
@@ -29,7 +33,30 @@ TODO: Include short and useful examples for package users. Add longer examples
 to `/example` folder.
 
 ```dart
-const like = 'sample';
+/// Initialize
+final LocalNetwork localNetwork = LocalNetwork();
+localNetwork.initialize(uuid: uuid.v4());
+
+/// Listen
+localNetwork.discoveredDevicesStream.listen((event) {
+    for (var element in event) {
+        debugPrint("Discovered Device: ${element.uuid} ${element.address}:${element.port}");
+    }
+});
+localNetwork.connectedDevicesStream.listen((event) {
+    for (var element in event) {
+        debugPrint("Connected Device: ${element.address}:${element.port}");
+    }
+});
+
+/// Connect Device
+localNetwork.connect(discoveredDevice);
+
+/// Disconnect Device
+localNetwork.disconnect(connectedDevice);
+
+/// Send Data
+connectedDevice.send(event);
 ```
 
 ## Additional information
